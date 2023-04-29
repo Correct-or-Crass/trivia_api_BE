@@ -1,10 +1,11 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.0"
+ruby "2.7.4"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.4"
+# gem "rails", "~> 7.0.4"
+gem 'rails', '~> 5.2.8', '>= 5.2.8.1'
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -64,5 +65,5 @@ group :development do
 end
 
 group :test do
- gem "webmock" 
+#  gem "webmock" 
 end
