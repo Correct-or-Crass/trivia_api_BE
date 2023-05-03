@@ -47,7 +47,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'orderly'
   gem 'pry-rails'
-  gem 'webmock'
+  # gem 'webmock'
 
   # gem 'factory_bot_rails'
   # gem 'faker'
