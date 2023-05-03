@@ -2,27 +2,41 @@ require 'rails_helper'
 
 RSpec.describe 'Giphy Service' do
   describe 'Happy Path' do
-    it 'responds with high level keys: data, pagination, meta' do
+
+    before do
+      phrase =  "If I throw a stick, will you leave?" 
+      json_response = File.read('spec/fixtures/services/giphy/happy_path/full_phrase_response.json') 
+      @response = JSON.parse(json_response, symbolize_names: true)
       
-      phrase = "If I throw a stick, will you leave?"
-      json_response = File.read('spec/fixtures/services/giphy/happy_path/full_phrase_response.json')
       stub_request(:get, 'https://api.giphy.com/v1/gifs/search')
         .with(query: {'api_key' => ENV['giphy_api_key'],'q'=> phrase, 'rating' => 'r' })
-        .to_return(body: @json_response)
+        .to_return(body: json_response)
+        JSON.parse(json_response, symbolize_names: true)
+      end
 
-      response =  JSON.parse(json_response, symbolize_names: true)
+    it 'responds with high level keys: data, pagination, meta' do
+      # require 'pry';binding.pry
+      expect(@response).to be_a(Hash)
+      expect(@response.keys).to eq([:data, :pagination, :meta])
       
-      expect(response).to be_a(Hash)
-      expect(response.keys).to eq([:data, :pagination, :meta])
-      expect(response[:data]).to be_a(Array)
+      expect(@response[:data]).to be_a(Array)
+      expect(@response[:data][0]).to be_a(Hash)
 
-      expect(response[:pagination]).to be_a(Hash)
-      expect(response[:pagination].keys).to eq([:total_count, :count, :offset])
+      expect(@response[:pagination]).to be_a(Hash)
+      expect(@response[:pagination].keys).to eq([:total_count, :count, :offset])
       
-      expect(response[:meta]).to be_a(Hash)
-      expect(response[:meta].keys).to eq([:status, :msg, :response_id])
+      expect(@response[:meta]).to be_a(Hash)
+      expect(@response[:meta].keys).to eq([:status, :msg, :response_id])
     end
-    # require 'pry';binding.pry
+
+    it 'responds with pagination>count & meta>status in integer datatypes' do
+      # require 'pry';binding.pry
+      expect(@response[:pagination][:count]).to be_a(Integer)
+      expect(@response[:pagination][:count]).to eq(50)
+      
+      expect(@response[:meta][:status]).to be_a(Integer)
+      expect(@response[:meta][:status]).to eq(200)
+    end
   end
 
   describe 'Sad Path' do
