@@ -16,7 +16,6 @@ RSpec.describe 'Giphy Service' do
         end
 
       it 'responds with high level keys: data, pagination, meta' do
-        # require 'pry';binding.pry
         expect(@response).to be_a(Hash)
         expect(@response.keys).to eq([:data, :pagination, :meta])
         
@@ -31,7 +30,6 @@ RSpec.describe 'Giphy Service' do
       end
 
       it 'responds with pagination>count & meta>status in integer datatypes' do
-        # require 'pry';binding.pry
         expect(@response[:pagination][:count]).to be_a(Integer)
         expect(@response[:pagination][:count]).to eq(50)
         
@@ -40,7 +38,6 @@ RSpec.describe 'Giphy Service' do
       end
 
       it 'responds with data which has keys: id, type, url, title, rating, import_datetime' do
-        # require 'pry';binding.pry
         expect(@response[:data].count).to eq(@response[:pagination][:count])
 
         @response[:data].each do |gif|
@@ -52,9 +49,6 @@ RSpec.describe 'Giphy Service' do
           
           expect(gif[:type]).to eq('gif')
         end
-
-
-
       end
     end
   end
