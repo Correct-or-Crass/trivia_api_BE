@@ -286,8 +286,32 @@
           null,
           null
         ]
+      },
+      "/Users/sergioazcona/Desktop/turing_work/5Mod/correct_or_crass/trivia_api_BE/app/services/giphy_service.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1683662144
+    "timestamp": 1683663693
   }
 }
