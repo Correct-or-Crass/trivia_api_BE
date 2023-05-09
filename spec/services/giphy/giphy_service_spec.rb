@@ -50,6 +50,36 @@ RSpec.describe 'Giphy Service' do
           expect(gif[:type]).to eq('gif')
         end
       end
+
+    end
+      
+    context 'responses with gif data count == 0' do
+      before do
+        # phrase = no phrase passed in ## left commented out intentionally to show that search query is missing
+        json_response = File.read('spec/fixtures/services/giphy/happy_path/no_data_response.json') 
+        @response = JSON.parse(json_response, symbolize_names: true)
+        
+        stub_request(:get, 'https://api.giphy.com/v1/gifs/search')
+          .with(query: {'api_key' => ENV['giphy_api_key'], 'rating' => 'r' }) # no search query passed in intentionally
+          .to_return(body: json_response)
+          JSON.parse(json_response, symbolize_names: true)
+        end
+
+      it 'responds with high level keys (data, pagination, meta) and their values' do
+        expect(@response.keys).to eq([:data, :pagination, :meta])
+        
+        #data is an empty array when request has no matching gifs 
+        expect(@response[:data]).to be_a(Array)
+        expect(@response[:data].empty?).to eq(true)
+
+        # pagination all values == 0  
+        expect(@response[:pagination].keys).to eq([:total_count, :count, :offset])
+        expect(@response[:pagination][:total_count]).to eq(0)
+        expect(@response[:pagination][:total_count]).to eq(@response[:pagination][:count])
+        expect(@response[:pagination][:count]).to eq(@response[:pagination][:offset])
+        
+        expect(@response[:meta][:status]).to eq(200)
+      end
     end
   end
 
