@@ -15,10 +15,4 @@ ActiveRecord::Schema.define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "users_table", id: :integer, default: nil, force: :cascade do |t|
-    t.text "user_name"
-    t.text "user_email"
-    t.index ["user_email"], name: "users_table_user_email_key", unique: true
-  end
-
 end
