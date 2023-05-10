@@ -84,5 +84,28 @@ RSpec.describe 'Giphy Service' do
   end
 
   describe 'Sad Path' do
+    context 'responses when no API key param is present' do
+      before do
+        phrase =  "If I throw a stick, will you leave?" 
+        json_response = File.read('spec/fixtures/services/giphy/sad_path/no_api_key_response.json') 
+        @response = JSON.parse(json_response, symbolize_names: true)
+        
+        stub_request(:get, 'https://api.giphy.com/v1/gifs/search')
+          .with(query: {'api_key' => ENV[''],'q'=> phrase, 'rating' => 'r' }) 
+          .to_return(body: json_response)
+          JSON.parse(json_response, symbolize_names: true)
+      end
+
+      it 'has high level and secondary level keys with a status and message related to the response' do
+        expect(@response.keys).to eq([:data, :meta])
+        
+        expect(@response[:data]).to be_a(Array)
+        expect(@response[:data].empty?).to eq(true)
+
+        expect(@response[:meta].keys).to eq([:status, :msg, :response_id])
+        expect(@response[:meta][:status]).to eq(401)
+        expect(@response[:meta][:msg]).to eq('No API key found in request.')
+      end
+    end
   end
 end
