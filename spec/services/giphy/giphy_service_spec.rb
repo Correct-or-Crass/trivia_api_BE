@@ -91,7 +91,7 @@ RSpec.describe 'Giphy Service' do
         @response = JSON.parse(json_response, symbolize_names: true)
         
         stub_request(:get, 'https://api.giphy.com/v1/gifs/search')
-          .with(query: {'api_key' => ENV[''],'q'=> phrase, 'rating' => 'r' }) 
+          .with(query: {'api_key' => ENV[''],'q'=> phrase, 'rating' => 'r' }) #api_key == empty string
           .to_return(body: json_response)
           JSON.parse(json_response, symbolize_names: true)
       end
@@ -107,5 +107,30 @@ RSpec.describe 'Giphy Service' do
         expect(@response[:meta][:msg]).to eq('No API key found in request.')
       end
     end
+    
+    context 'responses when no API key param is present' do
+      before do
+        phrase =  "If I throw a stick, will you leave?" 
+        json_response = File.read('spec/fixtures/services/giphy/sad_path/unauthorized_(apiKey_issue)_response.json') 
+        @response = JSON.parse(json_response, symbolize_names: true)
+        
+        stub_request(:get, 'https://api.giphy.com/v1/gifs/search')
+          .with(query: {'api_key' => ENV['NOT_giphy_api_key'],'q'=> phrase, 'rating' => 'r' }) #api_key == NOT Giphy api_key
+          .to_return(body: json_response)
+          JSON.parse(json_response, symbolize_names: true)
+      end
+
+      it 'has high level and secondary level keys with a status and message related to the response' do
+        expect(@response.keys).to eq([:data, :meta])
+
+        expect(@response[:data]).to eq([])
+
+        expect(@response[:meta].keys).to eq([:status, :msg, :response_id])
+        expect(@response[:meta][:status]).to eq(401)
+        expect(@response[:meta][:msg]).to eq('Unauthorized')
+      end
+
+    end
+
   end
 end
