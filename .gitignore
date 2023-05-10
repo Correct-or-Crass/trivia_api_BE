@@ -1,0 +1,4 @@
+coverage
+# Ignore application configuration
+/config/application.yml
+/tmp/cache/bootsnap

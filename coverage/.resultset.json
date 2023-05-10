@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/sergioazcona/Desktop/turing_work/5Mod/correct_or_crass/trivia_api_BE/spec/spec_helper.rb": {
+      "/Users/devinpile/turing_work/5mod/projects/correct_or_crass/trivia_api_BE/spec/spec_helper.rb": {
         "lines": [
           1,
           null,
@@ -101,7 +101,7 @@
           null
         ]
       },
-      "/Users/sergioazcona/Desktop/turing_work/5Mod/correct_or_crass/trivia_api_BE/config/environment.rb": {
+      "/Users/devinpile/turing_work/5mod/projects/correct_or_crass/trivia_api_BE/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -110,7 +110,7 @@
           1
         ]
       },
-      "/Users/sergioazcona/Desktop/turing_work/5Mod/correct_or_crass/trivia_api_BE/config/application.rb": {
+      "/Users/devinpile/turing_work/5mod/projects/correct_or_crass/trivia_api_BE/config/application.rb": {
         "lines": [
           1,
           null,
@@ -153,7 +153,7 @@
           null
         ]
       },
-      "/Users/sergioazcona/Desktop/turing_work/5Mod/correct_or_crass/trivia_api_BE/config/boot.rb": {
+      "/Users/devinpile/turing_work/5mod/projects/correct_or_crass/trivia_api_BE/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -161,7 +161,7 @@
           1
         ]
       },
-      "/Users/sergioazcona/Desktop/turing_work/5Mod/correct_or_crass/trivia_api_BE/config/environments/test.rb": {
+      "/Users/devinpile/turing_work/5mod/projects/correct_or_crass/trivia_api_BE/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -225,7 +225,7 @@
           null
         ]
       },
-      "/Users/sergioazcona/Desktop/turing_work/5Mod/correct_or_crass/trivia_api_BE/config/initializers/cors.rb": {
+      "/Users/devinpile/turing_work/5mod/projects/correct_or_crass/trivia_api_BE/config/initializers/cors.rb": {
         "lines": [
           null,
           null,
@@ -245,7 +245,7 @@
           null
         ]
       },
-      "/Users/sergioazcona/Desktop/turing_work/5Mod/correct_or_crass/trivia_api_BE/config/initializers/filter_parameter_logging.rb": {
+      "/Users/devinpile/turing_work/5mod/projects/correct_or_crass/trivia_api_BE/config/initializers/filter_parameter_logging.rb": {
         "lines": [
           null,
           null,
@@ -257,7 +257,7 @@
           null
         ]
       },
-      "/Users/sergioazcona/Desktop/turing_work/5Mod/correct_or_crass/trivia_api_BE/config/initializers/inflections.rb": {
+      "/Users/devinpile/turing_work/5mod/projects/correct_or_crass/trivia_api_BE/config/initializers/inflections.rb": {
         "lines": [
           null,
           null,
@@ -277,7 +277,7 @@
           null
         ]
       },
-      "/Users/sergioazcona/Desktop/turing_work/5Mod/correct_or_crass/trivia_api_BE/config/routes.rb": {
+      "/Users/devinpile/turing_work/5mod/projects/correct_or_crass/trivia_api_BE/config/routes.rb": {
         "lines": [
           1,
           null,
@@ -288,6 +288,6 @@
         ]
       }
     },
-    "timestamp": 1683661134
+    "timestamp": 1683672817
   }
 }
